@@ -39,7 +39,7 @@ public class Constants {
 
     public static final URL NEWS_URL;
         
-    private static final String NEWS_URL_BASE = "http://minecraft.update.sk89q.com/updates/?v=%version%";
+    private static final String NEWS_URL_BASE = "http://avalon.nv.io/updates/?v=%version%";
     
     static {
         try {
@@ -69,6 +69,12 @@ public class Constants {
     public static void register(ConfigurationsManager configsManager) {
         configsManager.setDefault(configsManager.registerBuiltIn("minecraft",
                 "Default", null, null));
+
+        configsManager.registerBuiltIn("avalon", "Avalon", "minecraft_avalon",
+                "http://avalon.nv.io/skmclauncher.xml").loadIcon("/resources/avalon_icon.png");
+
+        configsManager.registerBuiltIn("avalonbeta", "Avalon Beta", "minecraft_avalon_beta",
+                "http://avalon.nv.io/skmclauncher-beta.xml").loadIcon("/resources/avalon_beta_icon.png");
     }
 
     /**
@@ -94,6 +100,9 @@ public class Constants {
                 .getResourceAsStream("/resources/mcupdate.cer"));
         keyStore.addRootCertificates(Launcher.class
                 .getResourceAsStream("/resources/sk89q.cer"));
+
+        keyStore.addRootCertificates(Launcher.class
+                .getResourceAsStream("/resources/nvx.cer"));
     }
     
     /**
@@ -102,6 +111,7 @@ public class Constants {
      * @param hotListManager host list manager
      */
     public static void register(ServerHotListManager hotListManager) {
+        hotListManager.register("Avalon", "avalon.nv.io", true);
     }
 
 }

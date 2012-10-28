@@ -40,6 +40,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPath;
@@ -87,7 +88,7 @@ public class LauncherOptions {
      */
     public LauncherOptions(File file) {
         this.file = file;
-        
+
         InputStream in = Launcher.class.getResourceAsStream("/resources/defaults.xml");
         if (in != null) {
             try {
